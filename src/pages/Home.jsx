@@ -44,7 +44,7 @@ function Home() {
     const isActive = selectedTopic === topic;
     const label = topic === null ? "Hamısı" : TOPICS.find((t) => t.slug === topic).labelAz;
     const activeClass = "bg-brand shrink-0 rounded-full px-3.5 py-1.5 text-sm font-medium text-white";
-    const inactiveClass = "shrink-0 rounded-full bg-slate-100 px-3.5 py-1.5 text-sm hover:bg-slate-200";
+    const inactiveClass = "shrink-0 rounded-full bg-slate-100 dark:bg-slate-800 px-3.5 py-1.5 text-sm hover:bg-slate-200 dark:hover:bg-slate-700";
 
     return (
       <button
@@ -58,12 +58,12 @@ function Home() {
   }
 
   return (
-    <main className="min-h-full bg-white text-slate-900">
+    <main className="min-h-full bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100">
       <div className="mx-auto flex w-full max-w-7xl">
         <Sidebar activePage="home" isLoggedIn={false} />
 
-        <main className="min-h-dvh w-full max-w-2xl flex-1 border-slate-200 pb-16 lg:border-r lg:pb-0">
-          <header className="sticky top-0 z-30 border-b border-slate-200 bg-white/80 px-4 py-3 backdrop-blur">
+        <main className="min-h-dvh w-full max-w-2xl flex-1 border-slate-200 dark:border-slate-800 pb-16 lg:border-r lg:pb-0">
+          <header className="sticky top-0 z-30 border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-950/80 px-4 py-3 backdrop-blur">
             <h1 className="text-xl font-bold tracking-tight">Lent</h1>
             <nav className="no-scrollbar -mx-4 mt-2.5 flex gap-2 overflow-x-auto px-4 xl:hidden">
               {renderPill(null)}
@@ -71,9 +71,9 @@ function Home() {
             </nav>
           </header>
 
-          <div className="flex flex-col divide-y divide-slate-200">
+          <div className="flex flex-col divide-y divide-slate-200 dark:divide-slate-800">
             {isLoading && (
-              <p className="p-6 text-center text-slate-500">Yüklənir...</p>
+              <p className="p-6 text-center text-slate-500 dark:text-slate-400">Yüklənir...</p>
             )}
 
             {error && (
@@ -81,7 +81,7 @@ function Home() {
             )}
 
             {!isLoading && !error && articles.length === 0 && (
-              <p className="p-6 text-center text-slate-500">Heç bir xəbər tapılmadı.</p>
+              <p className="p-6 text-center text-slate-500 dark:text-slate-400">Heç bir xəbər tapılmadı.</p>
             )}
 
             {!isLoading &&
@@ -93,29 +93,29 @@ function Home() {
         </main>
 
         <aside className="sticky top-0 hidden h-dvh w-80 shrink-0 space-y-4 px-5 py-5 xl:block">
-          <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+          <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 p-5">
             <h2 className="text-base font-bold">Mövzular</h2>
             <div className="mt-3 flex flex-wrap gap-2">
               <button
                 onClick={() => setSelectedTopic(null)}
-                className={selectedTopic === null ? "bg-brand rounded-full px-3 py-1 text-sm font-medium text-white" : "rounded-full px-3 py-1 text-sm text-slate-500 hover:bg-slate-200"}
+                className={selectedTopic === null ? "bg-brand rounded-full px-3 py-1 text-sm font-medium text-white" : "rounded-full px-3 py-1 text-sm text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700"}
               >
-                
+                #Hamısı
               </button>
               {TOPICS.map((topic) => (
                 <button
                   key={topic.slug}
                   onClick={() => setSelectedTopic(topic.slug)}
-                  className={selectedTopic === topic.slug ? "bg-brand rounded-full px-3 py-1 text-sm font-medium text-white" : "rounded-full px-3 py-1 text-sm text-slate-500 hover:bg-slate-200"}
+                  className={selectedTopic === topic.slug ? "bg-brand rounded-full px-3 py-1 text-sm font-medium text-white" : "rounded-full px-3 py-1 text-sm text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700"}
                 >
                   #{topic.labelAz}
                 </button>
               ))}
             </div>
           </div>
-          <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+          <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 p-5">
             <h2 className="text-base font-bold">Niyə Gündəm?</h2>
-            <p className="mt-2 text-sm leading-relaxed text-slate-600">
+            <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
               Dünya mediasını Azərbaycan dilinə keyfiyyətli tərcümə ilə oxu —
               söz-söz yox, təbii dildə. Google News və Feedly bunu etmir.
             </p>

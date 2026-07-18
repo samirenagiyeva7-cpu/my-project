@@ -6,7 +6,7 @@ function Login() {
   const [activeTab, setActiveTab] = useState("login");
 
   return (
-    <div className="flex min-h-full items-center justify-center bg-slate-50 px-4">
+    <div className="flex min-h-full items-center justify-center bg-slate-50 dark:bg-slate-950 px-4">
       <div className="w-full max-w-sm">
         <Link to="/" className="mb-8 flex items-center justify-center">
           <span className="text-brand inline-flex items-baseline text-3xl font-extrabold tracking-tight">
@@ -15,14 +15,14 @@ function Login() {
           </span>
         </Link>
 
-        <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-          <div className="mb-5 flex border-b border-slate-200">
+        <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-sm">
+          <div className="mb-5 flex border-b border-slate-200 dark:border-slate-800">
             <button
               onClick={() => setActiveTab("login")}
               className={`tab flex-1 border-b-2 pb-2.5 text-sm font-semibold ${
                 activeTab === "login"
                   ? "border-brand text-brand"
-                  : "border-transparent text-slate-500"
+                  : "border-transparent text-slate-500 dark:text-slate-400"
               }`}
             >
               Daxil ol
@@ -32,7 +32,7 @@ function Login() {
               className={`tab flex-1 border-b-2 pb-2.5 text-sm font-semibold ${
                 activeTab === "register"
                   ? "border-brand text-brand"
-                  : "border-transparent text-slate-500"
+                  : "border-transparent text-slate-500 dark:text-slate-400"
               }`}
             >
               Qeydiyyat
@@ -117,7 +117,7 @@ function Login() {
 
         <Link
           to="/"
-          className="mt-6 flex items-center justify-center gap-1 text-sm text-slate-400 hover:text-slate-600"
+          className="mt-6 flex items-center justify-center gap-1 text-sm text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
         >
           <ArrowLeft className="size-4" /> Lentə qayıt
         </Link>
@@ -126,4 +126,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Login; 

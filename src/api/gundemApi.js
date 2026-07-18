@@ -1,4 +1,12 @@
 const BASE_URL = "https://gundem-teal.vercel.app/api/v1";
+function getAnonId() {
+  let id = localStorage.getItem("anonId");
+  if (!id || id.length !== 36) {
+    id = crypto.randomUUID();
+    localStorage.setItem("anonId", id);
+  }
+  return id;
+}
 
 export async function getFeed(topic) {
   let url = `${BASE_URL}/feed?limit=20`;
@@ -33,4 +41,21 @@ export async function getTopics() {
 
   const data = await response.json();
   return data.topics;
+}
+
+export async function likeArticle(articleId) {
+  const response = await fetch(`${BASE_URL}/articles/${articleId}/like`, {
+    method: "POST",
+    headers: {
+      "X-Anon-Id": getAnonId(),
+    },
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    alert("XETA: " + errorText);
+    throw new Error("Bəyənmək mümkün olmadı");
+  }
+
+  return response.json();
 }
